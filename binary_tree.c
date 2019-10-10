@@ -16,10 +16,10 @@ void create_tree(node_t **tree, int i)
 	node_t *p;
 	
 	if (i >= N) {
-	    return;
+		return;
 	}
 
-    printf("create node i = %d\n", i);
+    	printf("create node i = %d\n", i);
     
 	if (tree_values[i] == -1) {
 		return;
