@@ -48,5 +48,5 @@ int main()
 	create_tree(&tree, 0);
 	print_tree(tree);
 
-  return 0;  
+	return 0;  
 }  
