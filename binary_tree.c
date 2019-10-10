@@ -13,25 +13,25 @@ typedef struct queue_node_t {
 	int v;
 } queue_node_t;
 
-typedef struct queue_t {
+typedef struct Queue {
 	queue_node_t *head;
 	queue_node_t *tail;
 	int size;
-} queue_t;
+} Queue;
 
 #define N 7
 int tree_values[] = {1,2,3,4,-1,5,6};
 
-void create_queue(queue_t **queue)
+void create_queue(Queue **queue)
 {
-    queue_t *p= (queue_t *)malloc(sizeof(queue_t));
+    Queue *p= (Queue *)malloc(sizeof(Queue));
     p->size = 0;
     p->head = NULL;
     p->tail = NULL;
     *queue = p;
 }
 
-node_t* get_queue(queue_t *queue)
+node_t* get_queue(Queue *queue)
 {
     if (queue->size == 0) {
         return NULL;
@@ -39,7 +39,7 @@ node_t* get_queue(queue_t *queue)
     return queue->head->value;
 }
 
-node_t* pop_queue(queue_t *queue)
+node_t* pop_queue(Queue *queue)
 {
     if (queue->size == 0) {
         return NULL;
@@ -52,7 +52,7 @@ node_t* pop_queue(queue_t *queue)
     return value;
 }
 
-void insert_queue(queue_t *queue, node_t *value)
+void insert_queue(Queue *queue, node_t *value)
 {
     queue_node_t *p = (queue_node_t *)malloc(sizeof(queue_node_t));
     p->value = value;
@@ -62,12 +62,12 @@ void insert_queue(queue_t *queue, node_t *value)
     queue->size++;
 }
 
-int size_queue(queue_t *queue)
+int size_queue(Queue *queue)
 {
     return queue->size;
 }
 
-void print_queue(queue_t *queue)
+void print_queue(Queue *queue)
 {
     queue_node_t *p;
     p = queue->head;
@@ -103,7 +103,7 @@ void create_tree(node_t **tree, int i)
 void print_tree(node_t *tree) {
     if (tree == NULL) return;
     
-    queue_t *queue;
+    Queue *queue;
     printf("start create queue");
     create_queue(&queue);
     printf("queue create done, size=%d\n", queue->size);
