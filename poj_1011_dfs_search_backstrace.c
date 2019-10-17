@@ -66,9 +66,9 @@ void search(int k, int sum, int num)
                 if (found) return;  
                 debug("否定%d\n", stick[i]);  
                 used[i] = 0;
-				pre_failed = stick[i];
+		pre_failed = stick[i];
                 if (k == 0) {
-                    // 如果最大的stick都尝试失败了，那后面更小的stick就更加失败, 不要浪费时间搜索了
+                    // 此时如果最大的stick都尝试失败了，那后面更小的stick就更加失败, 不要浪费时间搜索了
                     debug("不要再试了\n");
                     break;
                 }
