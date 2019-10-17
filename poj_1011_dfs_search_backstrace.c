@@ -52,21 +52,21 @@ void search(int k, int sum, int num)
     } else {  
         //从第k跟木棒开始搜索，如果有一根木棒满足:  
         //1 未被使用  
-        //2 之前没有相同长度的木棒出现过  
+        //2 长度跟上一次尝试失败的小木棒不一样
         //3 它的长度加上已拼凑好的长度不会超过原始长度  
         //4 sum加上它自己和所有比它短的木棒的长度必须超过原始长度  
         //则把这根木棒拼凑过去  
-        pre = -1;
+        pre_failed = -1; /* 上一根尝试失败的小木棒 */
         for (i = k; i < n; i++) {  
             debug("stick[i]=%d, pre=%d\n", stick[i], pre);
-            if (!used[i] && stick[i] != pre && sum+stick[i] <= len && sum+st[i] >= len) {  
-                pre = stick[i];  
+            if (!used[i] && stick[i] != pre_failed && sum+stick[i] <= len && sum+st[i] >= len) {    
                 debug("选择%d加在第%d根木棒后面\n", stick[i], num+1);  
                 used[i] = 1;  
                 search(i+1, sum+stick[i], num);  
                 if (found) return;  
                 debug("否定%d\n", stick[i]);  
-                used[i] = 0;  
+                used[i] = 0;
+		pre_failed = stick[i];
                 if (k == 0) break;  /* 原始木棒的第1根小木棒总是用长度最大的, 不用往后找 */  
             }  
         }  
