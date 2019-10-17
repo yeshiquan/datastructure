@@ -58,7 +58,7 @@ void search(int k, int sum, int num)
         //则把这根木棒拼凑过去  
         pre_failed = -1; /* 上一根尝试失败的小木棒 */
         for (i = k; i < n; i++) {  
-            debug("stick[i]=%d, pre=%d\n", stick[i], pre);
+            debug("stick[i]=%d, pre_failed=%d\n", stick[i], pre_failed);
             if (!used[i] && stick[i] != pre_failed && sum+stick[i] <= len && sum+st[i] >= len) {    
                 debug("选择%d加在第%d根木棒后面\n", stick[i], num+1);  
                 used[i] = 1;  
